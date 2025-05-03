@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roman Numeral Predictor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #1f1f1f;
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 255, 204, 0.3);
+        }
+
+        .navbar a {
+            color: #00ffcc;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #00cca3;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 20px;
+            color: #00ffcc;
+        }
+
+        form {
+            background-color: #1f1f1f;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: slideUp 1s ease;
+        }
+
+        input[type="file"],
+        input[type="submit"] {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            background: #00ffcc;
+            color: #000;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background: #00cca3;
+        }
+
+        .result {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .result img {
+            margin-top: 10px;
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Single Roman Prediction</a>
+        <a href="/gemini">Long Roman Prediction</a>
+    </div>
+
+    <h1>Roman Numeral Predictor</h1>
+
+    <form action="/gemini_predict" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2>Prediction: {{ prediction }}</h2>
+        {% if image_path %}
+        <img src="{{ image_path }}" alt="Uploaded Image">
+        {% endif %}
+    </div>
+    {% endif %}
+</body>
+</html>

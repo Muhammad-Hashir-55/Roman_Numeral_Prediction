@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Long Roman Numeral Predictor</title>
+    <style>
+        /* Same styling as index.html for consistency */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #1f1f1f;
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 255, 204, 0.3);
+        }
+
+        .navbar a {
+            color: #00ffcc;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2rem;
+        }
+
+        .navbar a:hover {
+            color: #00cca3;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 20px;
+            color: #00ffcc;
+        }
+
+        form {
+            background-color: #1f1f1f;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="file"],
+        input[type="submit"] {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            background: #00ffcc;
+            color: #000;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background: #00cca3;
+        }
+
+        .result {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .result img {
+            margin-top: 10px;
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/predict_single">Single Roman Prediction</a>
+        <a href="/predict_long">Long Roman Prediction (Gemini)</a>
+    </div>
+
+    <h1>Long Roman Numeral Prediction (Gemini)</h1>
+
+    <form action="/long_predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <input type="submit" value="Predict with Gemini">
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2>Gemini Output: {{ prediction }}</h2>
+        <h3>Integer Value: {{ integer }}</h3>
+        <img src="{{ image_path }}" alt="Uploaded Image">
+    </div>
+    {% endif %}
+</body>
+</html>
