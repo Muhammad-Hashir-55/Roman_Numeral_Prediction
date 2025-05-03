@@ -1,0 +1,128 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="title">Upload an Image</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if filename %}
+            <div class="result">
+                <h2>Prediction: {{ prediction }}</h2>
+                <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roman Numeral Predictor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            transition: background-color 0.5s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #00ffcc;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        form {
+            background-color: #1f1f1f;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: slideUp 1s ease;
+        }
+
+        input[type="file"] {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        input[type="submit"] {
+            background: #00ffcc;
+            color: #000;
+            font-weight: bold;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: #00cca3;
+        }
+
+        .result {
+            margin-top: 30px;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        .result img {
+            margin-top: 10px;
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Roman Numeral Predictor</h1>
+
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2>Prediction: {{ prediction }}</h2>
+        {% if image_path %}
+        <img src="{{ image_path }}" alt="Uploaded Image">
+        {% endif %}
+    </div>
+    {% endif %}
+</body>
+</html>

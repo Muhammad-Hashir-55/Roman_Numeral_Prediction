@@ -1,0 +1,114 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Container Styling */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    animation: slideIn 1s ease-out;
+}
+
+/* Title Styling */
+.title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #F3B941;
+    animation: pulse 2s infinite;
+}
+
+/* Form Styling */
+form {
+    margin-top: 20px;
+}
+
+form input[type="file"] {
+    padding: 10px;
+    border: 2px dashed #F3B941;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="file"]:hover {
+    background-color: rgba(243, 185, 65, 0.2);
+}
+
+form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #E87A5D;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #F3B941;
+    color: #1e3c72;
+}
+
+/* Result Styling */
+.result {
+    margin-top: 30px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.result h2 {
+    color: #F3B941;
+    margin-bottom: 20px;
+}
+
+.result img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.result img:hover {
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
