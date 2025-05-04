@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import os
 import numpy as np
 import cv2
-from tensorflow.keras.models import load_model
+from tensorflow.keras.models import load_model # type: ignore
 from sklearn.preprocessing import LabelEncoder
 import joblib
 import PIL.Image
@@ -12,15 +12,15 @@ import api  # Your API key module
 app = Flask(__name__)
 
 # Load the CNN model for single-character Roman numeral prediction
-model = load_model(r'D:\My Coding\Roman_Numeral_Prediction_Challenge\model\roman_numeral_predictor.keras')
-label_encoder = joblib.load(r'D:\My Coding\Roman_Numeral_Prediction_Challenge\model\label_encoder.pkl')
+model = load_model(r'model/roman_numeral_predictor.keras')
+label_encoder = joblib.load('model/label_encoder.pkl')
 
 # Upload folder
-UPLOAD_FOLDER = r'D:\My Coding\Roman_Numeral_Prediction_Challenge\static\uploads'
+UPLOAD_FOLDER = r'static/uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Configure Gemini API
-genai.configure(api_key=api.s)
+genai.configure(api_key='AIzaSyAEhUW514BM2cd_4R9O7FGeW3KBSa647ss')
 gemini_model = genai.GenerativeModel("gemini-2.0-flash-thinking-exp-1219")
 
 # -------------- Routes --------------
